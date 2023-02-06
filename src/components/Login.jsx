@@ -10,8 +10,8 @@ function Login() {
             <div class="form" >
                 <h2>Connexion</h2>
                 <div class="inputBox">
-                    <input type="string" name='tel' required="required"/>
-                    <span>Numero Telephone</span>
+                    <input type="string" name='email' required="required"/>
+                    <span>Email</span>
                     <i></i>
                 </div>
                 <div class="inputBox2">

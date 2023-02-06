@@ -110,7 +110,7 @@ img {
   width: 176px;
   object-fit: cover;
   position: relative;
-  top: 19px;
+  top: -175px;
 }
 
 @media (max-width: 700px) {

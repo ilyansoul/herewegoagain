@@ -1,65 +1,45 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
 import EditLeft from './EditLeft';
 
-class EditProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: null,
-      password: null,
-      confirmPassword: null,
-      error: null
-    };
-    this.state = {
-      image: null,
-      formData: {
-        user_id: '',
-        first_name: "",
-        dob_day: "",
-        dob_month: "",
-        dob_year: "",
-        gender_identity: "man",
-        gender_interest: "woman",
-        about: "",
-        matches: []
-      }
-    };
-  }
+const EditProfil = (props) => {
+  const [formData, setFormData] = useState({
+    username: '',
+    dob_day: '',
+    dob_month: '',
+    dob_year: '',
+    gender_identity: 'man',
+    gender_interest: 'woman',
+    email: '',
+    password: '',
+    passwordCheck: '',
+    matches: []
+  });
 
 
-  matchPassword = async (e) => {
-    e.preventDefault();
-    try {
-      if (this.state.password !== this.state.confirmPassword) {
-        this.setState({ error: 'Password need to match' });
-      }
-      console.log('make a post request to our database');
-    } catch (error) {
-      console.log('error');
-    }
-  };
-
-  handleImageChange = (event) => {
-    this.setState({ image: URL.createObjectURL(event.target.files[0]) });
-  };
-
-  handleChange = (event) => {
-    this.State({
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
       [event.target.name]: event.target.value
+    });
+  };
 
-    }
-    )
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const userId = props.match.params.userId;
+    axios.put('http://localhost:5000/users/:id')
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => console.log(error));
   };
 
 
-  render() {
-
-    return (
-      <div className='back'>
-        <EditLeft/>
-        <form action='http://localhost:5000/api/signup' method='POST' >
-          <div className='container'>
+  return (
+    <form onSubmit={handleSubmit} action='localhost:5000/users/:id' method='PUT'>
+     
+       <div className='container'>
             <h1>Inscription</h1>
 
 
@@ -69,9 +49,10 @@ class EditProfile extends Component {
               type="text"
               name="username"
               placeholder="Enter Username"
-              value={this.state.formData.username}
+              value={formData.username}
 
-              onChange={this.state.handleChange} />
+              onChange={handleChange}
+               />
             <label><b> Date de Naissance</b></label>
             <br /><br />
             <input className='text-date'
@@ -79,8 +60,8 @@ class EditProfile extends Component {
               type="number"
               name="dob_day"
               placeholder="DD"
-              // value={this.state.formData.dob_day}
-              onChange={this.handleChange}
+              value={formData.dob_day}
+              onChange={handleChange}
             />
 
             <input className='text-date'
@@ -88,8 +69,8 @@ class EditProfile extends Component {
               type="number"
               name="dob_month"
               placeholder="MM"
-              // value={this.state.formData.dob_month}
-              onChange={this.handleChange}
+              value={formData.dob_month}
+              onChange={handleChange}
             />
 
             <input className='text-date'
@@ -97,8 +78,8 @@ class EditProfile extends Component {
               type="number"
               name="dob_year"
               placeholder="YYYY"
-              // value={this.state.formData.dob_year}
-              onChange={this.handleChange}
+              value={formData.dob_year}
+              onChange={handleChange}
             />
             <br /><br />
             <div className='posi'>
@@ -107,48 +88,7 @@ class EditProfile extends Component {
             </div>
 
 
-            <div className="multiple-input-container">
-
-              <select
-                name="gender_identity" >
-
-                <optgroup>
-                  <option
-                    checked={this.state.formData.gender_identity === "man"}
-                    onChange={this.handleChange}
-                  >
-                    Homme
-
-                  </option>
-                  <option
-                    checked={this.state.formData.gender_identity === "woman"}
-                  >
-                    femme
-                  </option>
-                </optgroup>
-
-              </select>
-
-
-              <select name="gender_interest">
-                <optgroup >
-                  <option
-                    checked={this.state.formData.gender_interest === "man"}
-
-                  >
-                    Homme
-
-                  </option>
-                  <option
-                    checked={this.state.formData.gender_interest === "woman"}
-                  >                    Femme
-                  </option>
-
-                </optgroup>
-
-              </select>
-
-            </div>
+            
 
             <label><b>Email</b></label>
             <input className='text'
@@ -156,7 +96,7 @@ class EditProfile extends Component {
               placeholder="Enter Email"
               name="email"
               required={true}
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
 
             <label ><b>Mot de passe</b></label>
@@ -165,7 +105,8 @@ class EditProfile extends Component {
               placeholder="Enter Password"
               name="password"
               required={true}
-              onChange={this.handleChange} />
+              // onChange={handleChange} 
+              />
 
             <label ><b>Confirmation Mot de passe</b></label>
             <input className='password'
@@ -173,7 +114,8 @@ class EditProfile extends Component {
               placeholder="Enter Password"
               name="password-check"
               required={true}
-              onChange={this.handleChange} />
+              // onChange={handleChange} 
+              />
             <br />
 
             <label ><b>Telephone</b></label>
@@ -184,42 +126,20 @@ class EditProfile extends Component {
               name="tel"
               placeholder="812345678"
               required={true}
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
             <br />
 
-            <label>Picture Profile</label>
-            <input type="file"
-              name='url'
-              id='url'
-              require={true}
-              onChange={this.handleImageChange}
-            />
-            <div className='photo-container'>
-              <br /><br />
-              {this.state.image && (
-                <img src={this.state.image} alt="Preview" />
-              )}
-            </div>
-
+          
 
             <div class="clearfix">
 
-              <button type="submit" className="btn-submit">Sign Up</button>
-              {this.state.error && <div className="error-message">{this.state.error}</div>}
+            <button type="submit" className="btn-submit">Update</button>              {/* {error && <div className="error-message">{error}</div>} */}
             </div>
           </div>
-        </form>
-      </div>
+    </form>
+  );
+};
 
 
-    );
-
-  }
-}
-
-
-
-
-
-export default EditProfile
+export default EditProfil

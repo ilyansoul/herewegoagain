@@ -1,59 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './styles/register.css';
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
-class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: null,
-      password: null,
-      confirmPassword: null,
-      error: null
-    };
-    this.state = {
-      image: null,
-      formData: {
-        user_id: '',
-        first_name: "",
-        dob_day: "",
-        dob_month: "",
-        dob_year: "",
-        gender_identity: "man",
-        gender_interest: "woman",
-        about: "",
-        matches: []
-      }
-    };
-  }
+const Register = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    dob_day: '',
+    dob_month: '',
+    dob_year: '',
+    gender_identity: 'man',
+    gender_interest: 'woman',
+    email: '',
+    password: '',
+    passwordCheck: '',
+    about: '',
+    matches: []
+  });
+  const [error, setError] = useState(null);
+  const [cookies, setCookies, removeCookies] = useState(['user'])
 
 
-  matchPassword = async (e) => {
-    e.preventDefault();
-    try {
-      if (this.state.password !== this.state.confirmPassword) {
-        this.setState({ error: 'Password need to match' });
-      }
-      console.log('make a post request to our database');
-    } catch (error) {
-      console.log('error');
-    }
-  };
+ 
 
-  handleImageChange = (event) => {
-    this.setState({ image: URL.createObjectURL(event.target.files[0]) });
-  };
-
-  handleChange = (event) => {
-    this.State({
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
       [event.target.name]: event.target.value
-
-    }
-    )
-
+    });
   };
 
 
-  render() {
 
     return (
       <div className='back'>
@@ -68,9 +45,9 @@ class Register extends Component {
               type="text"
               name="username"
               placeholder="Enter Username"
-              value={this.state.formData.username}
+              value={formData.username}
 
-              onChange={this.state.handleChange} />
+              onChange={handleChange} />
             <label><b> Date de Naissance</b></label>
             <br /><br />
             <input className='text-date'
@@ -78,8 +55,8 @@ class Register extends Component {
               type="number"
               name="dob_day"
               placeholder="DD"
-              // value={this.state.formData.dob_day}
-              onChange={this.handleChange}
+              // value={formData.dob_day}
+              onChange={handleChange}
             />
 
             <input className='text-date'
@@ -87,8 +64,8 @@ class Register extends Component {
               type="number"
               name="dob_month"
               placeholder="MM"
-              // value={this.state.formData.dob_month}
-              onChange={this.handleChange}
+              // value={formData.dob_month}
+              onChange={handleChange}
             />
 
             <input className='text-date'
@@ -96,8 +73,8 @@ class Register extends Component {
               type="number"
               name="dob_year"
               placeholder="YYYY"
-              // value={this.state.formData.dob_year}
-              onChange={this.handleChange}
+              // value={formData.dob_year}
+              onChange={handleChange}
             />
             <br /><br />
             <div className='posi'>
@@ -113,14 +90,14 @@ class Register extends Component {
 
                 <optgroup>
                   <option
-                    checked={this.state.formData.gender_identity === "man"}
-                    onChange={this.handleChange}
+                    checked={formData.gender_identity === "man"}
+                    onChange={handleChange}
                   >
                     Homme
 
                   </option>
                   <option
-                    checked={this.state.formData.gender_identity === "woman"}
+                    checked={formData.gender_identity === "woman"}
                   >
                     femme
                   </option>
@@ -132,14 +109,14 @@ class Register extends Component {
               <select name="gender_interest">
                 <optgroup >
                   <option
-                    checked={this.state.formData.gender_interest === "man"}
+                    checked={formData.gender_interest === "man"}
 
                   >
                     Homme
 
                   </option>
                   <option
-                    checked={this.state.formData.gender_interest === "woman"}
+                    checked={formData.gender_interest === "woman"}
                   >                    Femme
                   </option>
 
@@ -155,7 +132,7 @@ class Register extends Component {
               placeholder="Enter Email"
               name="email"
               required={true}
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
 
             <label ><b>Mot de passe</b></label>
@@ -164,7 +141,7 @@ class Register extends Component {
               placeholder="Enter Password"
               name="password"
               required={true}
-              onChange={this.handleChange} />
+              onChange={handleChange} />
 
             <label ><b>Confirmation Mot de passe</b></label>
             <input className='password'
@@ -172,7 +149,7 @@ class Register extends Component {
               placeholder="Enter Password"
               name="password-check"
               required={true}
-              onChange={this.handleChange} />
+              onChange={handleChange} />
             <br />
 
             <label ><b>Telephone</b></label>
@@ -183,7 +160,7 @@ class Register extends Component {
               name="tel"
               placeholder="812345678"
               required={true}
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
             <br />
 
@@ -192,7 +169,7 @@ class Register extends Component {
             <div class="clearfix">
 
               <button type="submit" className="btn-submit">Sign Up</button>
-              {this.state.error && <div className="error-message">{this.state.error}</div>}
+              {error && <div className="error-message">{error}</div>}
             </div>
           </div>
         </form>
@@ -202,7 +179,7 @@ class Register extends Component {
     );
 
   }
-}
+
 
 
 

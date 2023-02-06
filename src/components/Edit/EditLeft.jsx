@@ -8,7 +8,7 @@ function EditLeft() {
       <div className='left-side'>
         <ChatHeader />
 
-        <a href="http://localhost:3000/homepage/edituser/editprofile"><button className='btn-links'>Change Info</button></a>
+        <a href="http://localhost:3000/homepage/edituser/editprofil"><button className='btn-links'>Change Info</button></a>
         <a href="http://localhost:3000/homepage/edituser/localisation"><button className='btn-links'>Localisation</button></a>
         <a href=""><button className='btn-links'>Ranger User</button></a>
         <a href=""><button className='btn-links'>Age</button></a>

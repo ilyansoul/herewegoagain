@@ -256,3 +256,8 @@ input[type='submit']:active {
     opacity: 0.8;
 }
 
+.descript {
+    background-color: #EA2672 ;
+    height: 12vh;
+    width: 100%;
+}
