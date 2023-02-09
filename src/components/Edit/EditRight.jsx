@@ -54,7 +54,7 @@ class EditRight extends Component {
                 onChange={(event) => this.handleImageChange(event, 0)}
               />
               {this.state.imageUrls[0] ? (
-                <img src={this.state.imageUrls[0]} alt="" />
+                <img className='box-img' src={this.state.imageUrls[0]} alt="" />
               ) : (
                 <p></p>
               )}
@@ -67,7 +67,7 @@ class EditRight extends Component {
                 onChange={(event) => this.handleImageChange(event, 1)}
               />
               {this.state.imageUrls[1] ? (
-                <img src={this.state.imageUrls[1]} alt="" />
+                <img  className='box-img' src={this.state.imageUrls[1]} alt="" />
               ) : (
                 <p></p>
               )}
@@ -80,7 +80,7 @@ class EditRight extends Component {
                 onChange={(event) => this.handleImageChange(event, 2)}
               />
               {this.state.imageUrls[2] ? (
-                <img src={this.state.imageUrls[2]} alt="" />
+                <img className='box-img' src={this.state.imageUrls[2]} alt="" />
               ) : (
                 <p></p>
               )}
@@ -93,7 +93,7 @@ class EditRight extends Component {
                 onChange={(event) => this.handleImageChange(event, 3)}
               />
               {this.state.imageUrls[3] ? (
-                <img src={this.state.imageUrls[3]} alt="" />
+                <img className='box-img' src={this.state.imageUrls[3]} alt="" />
               ) : (
                 <p></p>
               )}
@@ -107,7 +107,7 @@ class EditRight extends Component {
                 onChange={(event) => this.handleImageChange(event, 4)}
               />
               {this.state.imageUrls[4] ? (
-                <img src={this.state.imageUrls[4]} alt="" />
+                <img className='box-img'  src={this.state.imageUrls[4]} alt="" />
               ) : (
                 <p></p>
               )}
@@ -123,7 +123,7 @@ class EditRight extends Component {
                 onChange={(event) => this.handleImageChange(event, 5)}
               />
               {this.state.imageUrls[5] ? (
-                <img src={this.state.imageUrls[5]} alt="" />
+                <img className='box-img' src={this.state.imageUrls[5]} alt="" />
               ) : (
                 <p></p>
               )}
@@ -136,7 +136,7 @@ class EditRight extends Component {
                 onChange={(event) => this.handleImageChange(event, 6)}
               />
               {this.state.imageUrls[6] ? (
-                <img src={this.state.imageUrls[6]} alt="" />
+                <img className='box-img' src={this.state.imageUrls[6]} alt="" />
               ) : (
                 <p></p>
               )}
@@ -150,7 +150,7 @@ class EditRight extends Component {
                 onChange={(event) => this.handleImageChange(event, 7)}
               />
               {this.state.imageUrls[7] ? (
-                <img src={this.state.imageUrls[7]} alt="" />
+                <img className='box-img' src={this.state.imageUrls[7]} alt="" />
               ) : (
                 <p></p>
               )}
@@ -164,7 +164,7 @@ class EditRight extends Component {
                 onChange={(event) => this.handleImageChange(event, 8)}
               />
               {this.state.imageUrls[8] ? (
-                <img src={this.state.imageUrls[8]} alt="" />
+                <img className='box-img' src={this.state.imageUrls[8]} alt="" />
               ) : (
                 <p></p>
               )}

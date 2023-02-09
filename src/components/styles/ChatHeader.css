@@ -15,6 +15,15 @@ overflow: hidden;
 
 }
 
+.profile-photo {
+    top: -20px;
+    height: 100px ;
+    position: relative;
+    left: 400px;
+    border-radius: 50px;
+  
+}
+
 
 @media (max-width: 700px) {
     .chat-container-header {

@@ -20,12 +20,18 @@
     height: 100vh;
     border-left: 2px solid #EA2672;
   }
+
+  .taille {
+    width: 400px;
+    height: 650px;    
+  }
   
   .swipe {
     position: absolute;
+    
   }
   
-  .dashboard .card-container {
+   .card-container {
     width: 400px;
     height: 650px;
   }

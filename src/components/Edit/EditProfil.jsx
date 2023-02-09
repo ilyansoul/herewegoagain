@@ -17,6 +17,16 @@ const EditProfil = (props) => {
     matches: []
   });
 
+  useEffect(() => {
+    const userId = props.params.userId;
+    axios
+      .get(`http://localhost:3000/api/users/${userId}`)
+      .then(response => {
+        setFormData(response.data);
+      })
+      .catch(error => console.log(error));
+  }, [props.match.params.userId]);
+
 
   const handleChange = (event) => {
     setFormData({
@@ -28,11 +38,12 @@ const EditProfil = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const userId = props.match.params.userId;
-    axios.put('http://localhost:5000/users/:id')
+    axios
+      .put(`http://localhost:3000/api/users/${userId}`, formData)
       .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => console.log(error));
+          console.log(response.data);
+        })
+        .catch(error => console.log(error));
   };
 
 
@@ -50,7 +61,6 @@ const EditProfil = (props) => {
               name="username"
               placeholder="Enter Username"
               value={formData.username}
-
               onChange={handleChange}
                />
             <label><b> Date de Naissance</b></label>
@@ -82,11 +92,6 @@ const EditProfil = (props) => {
               onChange={handleChange}
             />
             <br /><br />
-            <div className='posi'>
-              <label >Gender</label>
-              <label >Gender Interest</label>
-            </div>
-
 
             
 
@@ -112,7 +117,7 @@ const EditProfil = (props) => {
             <input className='password'
               type="password"
               placeholder="Enter Password"
-              name="password-check"
+              name="passwordCheck"
               required={true}
               // onChange={handleChange} 
               />

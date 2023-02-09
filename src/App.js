@@ -1,6 +1,5 @@
 
 import './App.css';
-import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -14,23 +13,35 @@ import EditRange from './components/Edit/EditRange';
 // import 'semantic-ui-css/semantic.min.css'
 import EditDescription from './components/Edit/EditDescription';
 import Acceuil from './pages/Acceuil';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {useCookies} from 'react-cookie'
+import OnBoarding from './pages/OnBoarding';
 
 
 function App() {
+
+  const [cookies, setCookie, removeCookie] = useCookies(['user'])
+
+  const authToken = cookies.AuthToken
+
   return (
     <div className="App">
+              
+
       <Routes>
         <Route path="/" element={<Acceuil />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/onboarding" element={<OnBoarding />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/homepage" element={<HomePage />} />
-        <Route path="/imageupload" element={<ImageUpload />} />
-        <Route path="/homepage/edituser" element={<EditUser />} />
-        <Route path="/homepage/edituser/localisation" element={<Localisation />} />
-        <Route path="/homepage/edituser/editprofil" element={<EditProfil />} />
-        <Route path="/homepage/edituser/editrange" element={<EditRange />} />
-        <Route path="/homepage/edituser/editdescription" element={<EditDescription />} />
+         <Route path="/homepage" element={<HomePage/>}/>
+         <Route path="/imageupload" element={<ImageUpload />} />
+         <Route path="/homepage/edituser" element={<EditUser />} />
+         <Route path="/homepage/edituser/localisation" element={<Localisation />} />
+          <Route path="/homepage/edituser/editprofil" element={<EditProfil />} />
+         <Route path="/homepage/edituser/editrange" element={<EditRange />} />
+          <Route path="/homepage/edituser/editdescription" element={<EditDescription />} />
       </Routes>
+      
     </div>
   );
 }

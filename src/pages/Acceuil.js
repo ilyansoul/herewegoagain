@@ -20,7 +20,7 @@ function Acceuil() {
         <div class="hero-image">
           <div class="hero-text">
             <h1 className='title'>FindYourTaste</h1>
-            <h2> Site de Rencontre repondant a vos besoins</h2>
+            <h2 className='sub-title'> Site de Rencontre repondant a vos besoins</h2>
           </div>
         </div>
       </div>

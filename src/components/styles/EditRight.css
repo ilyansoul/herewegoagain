@@ -105,12 +105,11 @@ border: 2px dashed black;
 color: white;  }
 
 
-img {
+.box-img {
   height: 179px;
   width: 176px;
   object-fit: cover;
   position: relative;
-  top: -175px;
 }
 
 @media (max-width: 700px) {

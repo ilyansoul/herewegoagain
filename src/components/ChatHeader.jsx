@@ -1,17 +1,38 @@
 import React from 'react'
 import './styles/ChatHeader.css';
 import  Logo from './logo.png';
+import { useCookies } from 'react-cookie'
 
-function ChatHeader() {
-  return (
-    <div className='chat-container-header'>
-      <div className='img-container'>
-          <img className='profile-img' src={Logo} alt="" />
-      </div>
-      <h3 className='profile'>UserName</h3>
-      <i className='log-out-icon'></i>
-    </div>
-  )
+
+const ChatHeader = ({ user }) => {
+
+    const [ cookies, setCookie, removeCookie ] = useCookies(['user'])
+
+    const logout = () => {
+        removeCookie('UserId', cookies.UserId)
+        removeCookie('AuthToken', cookies.AuthToken)
+        window.location.reload()
+    }
+
+    return (
+        <div className="chat-container-header">
+            {user ? (
+                <>
+                    <div className="profile">
+                        <div className="img-container">
+                        <img className='profile-img' src={Logo} alt="" />
+
+                            <img className='profile-photo' src={user.url} alt={"photo of " + user.first_name}/>
+                        </div>
+                        <h3>{user.first_name}</h3>
+                    </div>
+                    <i className="log-out-icon" onClick={logout}>⇦</i>
+                </>
+            ) : (
+                <div>Loading...</div>
+            )}
+        </div>
+    )
 }
 
 export default ChatHeader
