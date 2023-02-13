@@ -100,6 +100,12 @@
     margin-top: 35px;
 
 }
+.inputBox3 {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+
+}
 
 .inputBox input {
     position: relative;
@@ -226,7 +232,7 @@
 
 }
 
-input[type='submit'] {
+.btn-login {
     border: none;
     outline: none;
     background: #45f4ff;
@@ -239,7 +245,7 @@ input[type='submit'] {
 
 }
 
-input[type='submit']:hover {
+.btn-login:hover {
     border: none;
     outline: none;
     background: #e1980f;
@@ -252,7 +258,7 @@ input[type='submit']:hover {
 
 }
 
-input[type='submit']:active {
+.btn-login:active {
     opacity: 0.8;
 }
 

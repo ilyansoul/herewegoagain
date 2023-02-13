@@ -16,6 +16,7 @@ import Acceuil from './pages/Acceuil';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import {useCookies} from 'react-cookie'
 import OnBoarding from './pages/OnBoarding';
+import Chat from './components/Chat/Chat';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Acceuil />} />
+        <Route path="/chat" element={<Chat />} />
         <Route path="/register" element={<Register />} />
         <Route path="/onboarding" element={<OnBoarding />} />
         <Route path="/login" element={<Login />} />

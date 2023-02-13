@@ -1,0 +1,39 @@
+.matches-display {
+position: fixed;
+display: flex;
+flex-direction: column;
+align-items: center;
+overflow-y: scroll;
+overscroll-behavior-y:none;
+scrollbar-width: none;
+color: white;
+height: 700px;
+width: 35%;
+
+}
+
+.match-card {
+    height: 90px;
+    width: 150px;
+    margin: 60px;
+
+}
+
+.picture-user-matches {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: space-between;
+
+
+}
+
+.display-picture {
+display: flex;
+justify-content: center;
+position: relative;
+right: 150px;
+}

@@ -1,4 +1,19 @@
+.chat-container-header {
+    display: flex;
+    justify-content: center;
+    background: rgba(17,35,75,255);
+    border-bottom:1px solid  #EA2672;
+}
 
+
+
+.user-name  {
+    display: flex;
+    position: relative;
+    bottom: 23px;
+    right: 70px;
+    color: white;
+}
 
 .profile {
   
@@ -12,15 +27,19 @@ width: 150px ;
 border: white ;
 /* background-color: #010536; */
 overflow: hidden;
+position: relative;
+right: 25px;
+
 
 }
 
 .profile-photo {
-    top: -20px;
     height: 100px ;
+    width: 90px;
     position: relative;
     left: 400px;
     border-radius: 50px;
+    left: 0px;
   
 }
 

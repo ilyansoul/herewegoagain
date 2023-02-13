@@ -46,7 +46,6 @@ class componentName extends Component {
       <>
       <div className='dashboard'>
        <EditLeft/>
-       <EditRight/>
        </div>
        </>
     );

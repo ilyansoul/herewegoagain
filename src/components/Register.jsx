@@ -5,7 +5,7 @@ import { useCookies } from 'react-cookie'
 import './styles/register.css';
 
 
-const AuthModal = () => {
+const Register = () => {
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
     const [confirmPassword, setConfirmPassword] = useState(null)
@@ -46,36 +46,53 @@ const AuthModal = () => {
     }
 
     return (
-        <div className="register-bak">
+        <div className="page">
+        <div className="container">
+    <div class="header">Inscription</div>
 
             <form onSubmit={handleSubmit}>
             <div className='container'>
-                <input className='text'
+                <div class="field input-field">
+
+                <input 
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="email"
+                    placeholder="Email"
                     required={true}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <input className='text'
+                </div>
+                <div class="field input-field">
+
+                <input
                     type="password"
                     id="password"
                     name="password"
-                    placeholder="password"
+                    placeholder="Mot de passe"
                     required={true}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                </div>
+                <div class="field input-field">
+
                 <input
                    className='text'
                     type="password"
                     id="password-check"
                     name="password-check"
-                    placeholder="confirm password"
+                    placeholder="Confirmation mot de passe"
                     required={true}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <input className="secondary-button" type="submit"/>
+                </div>
+                <input className="register-submit" type="submit"/>
+                <div class="form-link sign-up">
+        <span>Deja un compte  ?      </span> 
+        <a href="#">Connecte toi</a>
+      </div>
+
+                
                 <p>{error}</p>
                 </div>
             </form>
@@ -83,6 +100,7 @@ const AuthModal = () => {
             <hr/>
 
         </div>
+        </div>
     )
 }
-export default AuthModal
+export default Register
