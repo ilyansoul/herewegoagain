@@ -4,7 +4,6 @@ import HomePage from './pages/HomePage';
 import Login from './components/Login';
 import Register from './components/Register';
 import ImageUpload from './components/ImageUpload';
-import EditUser from './pages/EditUser';
 import Localisation from './components/Localisation/Localisation';
 import EditProfil from './components/Edit/EditProfil';
 import EditRange from './components/Edit/EditRange';
@@ -37,11 +36,10 @@ function App() {
         <Route path="/login" element={<Login />} />
          <Route path="/homepage" element={<HomePage/>}/>
          <Route path="/imageupload" element={<ImageUpload />} />
-         <Route path="/homepage/edituser" element={<EditUser />} />
-         <Route path="/homepage/edituser/localisation" element={<Localisation />} />
-          <Route path="/homepage/edituser/editprofil" element={<EditProfil />} />
-         <Route path="/homepage/edituser/editrange" element={<EditRange />} />
-          <Route path="/homepage/edituser/editdescription" element={<EditDescription />} />
+         <Route path="/homepage/localisation" element={<Localisation />} />
+          <Route path="/homepage/editprofil" element={<EditProfil />} />
+         <Route path="/homepage/editrange" element={<EditRange />} />
+          <Route path="/homepage/editdescription" element={<EditDescription />} />
       </Routes>
       
     </div>
