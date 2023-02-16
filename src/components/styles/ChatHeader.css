@@ -1,8 +1,8 @@
 .chat-container-header {
     display: flex;
     justify-content: center;
-    background: rgba(17,35,75,255);
-    border-bottom:1px solid  #EA2672;
+    background: rgb(234,38,114);
+    background: linear-gradient(254deg, rgba(234,38,114,1) 0%, rgba(236,57,127,1) 14%, rgba(255,255,255,1) 48%, rgba(1,5,54,1) 86%); 
 }
 
 
@@ -47,12 +47,32 @@ right: 25px;
 @media (max-width: 700px) {
     .chat-container-header {
  width: 100%;
- display: flex;
- flex-direction: column;
+
     }
     .profile-img{
         position: relative;
 top: 30px;  
 left: 100px;
+    }
+  }
+@media (max-width: 1300px) {
+    .chat-container-header {
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+ height: 28vh;
+    }
+    .profile-img{
+        position: relative;
+        left: 40px;
+        bottom: 35px;
+       
+    }
+    .profile-photo {
+        position: relative;
+        top: 69px;
+        left: -70px;
+        height: 90px ;
+    width: 90px;
     }
   }

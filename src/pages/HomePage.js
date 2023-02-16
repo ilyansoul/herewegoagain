@@ -97,7 +97,8 @@ const updateMatches = async (matchedUserId) => {
             <h1 className='posision'>Next</h1>
                  <Icon className='icon-left' name='arrow left' />
                  <Icon className='icon-right'  name='arrow right' />
-            <h1 className='posicion'>Matches</h1>                 </div>
+            <h1 className='posicion'>Matches</h1>                
+             </div>
 
               {filteredGenderedUsers?.map((genderedUser) =>
                 <TinderCard

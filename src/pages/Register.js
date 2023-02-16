@@ -49,7 +49,7 @@ const Register = () => {
 
     return (
         <div className="page">
-                    <img className='logo-acceuil' src={Logo} alt="" />
+                    <img className='logo-register' src={Logo} alt="" />
 
         <div className="container">
     <div class="header">Inscription</div>
