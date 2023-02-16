@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import '../styles/MatchesDisplay.css';
-import Chat from './Chat'
 
 
 function MatchesDisplay({ matches , setClickUser   }) {

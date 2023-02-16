@@ -9,9 +9,8 @@ const ChatInput = ({ user, clickedUser, getUserMessages, getClickedUsersMessages
   const clickedUserId = clickedUser?.user_id
 
   const addMessage = async () => {
-    let today = new Date();
       const message = {
-          timestamp: today.toLocaleTimeString(),
+          timestamp: new Date().toLocaleTimeString(),
           from_userId: userId,
           to_userId: clickedUserId,
           message: textArea

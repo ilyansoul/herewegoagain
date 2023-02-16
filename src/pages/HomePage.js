@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import TinderCard from 'react-tinder-card'
 import ChatContainer from '../components/Chat/ChatContainer'
-import EditSection from '../components/Edit/EditSection'
 import ChatHeader from '../components/Chat/ChatHeader'
 import axios from "axios";
 import { useCookies } from 'react-cookie';
-import { useRef } from 'react';
 import EditLeft from '../components/Edit/EditLeft'
+import { Icon } from 'semantic-ui-react'
+
 
 const HomePage = () => {
   const [user, setUser] = useState(null)
@@ -48,33 +48,29 @@ const HomePage = () => {
           getGenderedUsers()
       }
   }, [user])
-
-  const updateMatches = async (matchedUserId) => {
-      try {
-          await axios.put('http://localhost:5000/addmatch', {
-              userId,
-              matchedUserId
-          })
-          getUser()
-      } catch (err) {
-          console.log(err)
-      }
+  
+const updateMatches = async (matchedUserId) => {
+  try {
+    await axios.put('http://localhost:5000/addmatch', {
+      userId,
+      matchedUserId
+    })
+    await axios.put('http://localhost:5000/addmatch', {
+      userId: matchedUserId,
+      matchedUserId: userId
+    })
+    getUser()
+  } catch (err) {
+    console.log(err)
   }
+}
 
-  const handleNotification = (swipedUser) => {
-      if (swipedUser && !swipedUsers.includes(swipedUser.user_id)) {
-          setSwipedUsers([...swipedUsers, swipedUser.user_id]);
-          const notificationMessage = `You have been swiped right by ${user.first_name}!`
-          alert(notificationMessage);
-      }
-  }
 
   const swiped = (direction, swipedUserId, swipedUser) => {
       if (direction === 'right') {
           updateMatches(swipedUserId)
       }
       setLastDirection(direction)
-      handleNotification(swipedUser)
   }
 
   const outOfFrame = (name) => {
@@ -97,7 +93,11 @@ const HomePage = () => {
 
             </div>
             <div className="card-container">
-            
+            <div className='send-direct'>
+            <h1 className='posision'>Next</h1>
+                 <Icon className='icon-left' name='arrow left' />
+                 <Icon className='icon-right'  name='arrow right' />
+            <h1 className='posicion'>Matches</h1>                 </div>
 
               {filteredGenderedUsers?.map((genderedUser) =>
                 <TinderCard

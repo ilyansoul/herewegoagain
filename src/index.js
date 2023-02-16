@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter} from 'react-router-dom';
-import Register from './components/Register';
 import './components/styles/HomePage.css';
 import 'semantic-ui-css/semantic.min.css'
 

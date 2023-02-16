@@ -1,9 +1,8 @@
 
 import './App.css';
 import HomePage from './pages/HomePage';
-import Login from './components/Login';
-import Register from './components/Register';
-import ImageUpload from './components/ImageUpload';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import Localisation from './components/Localisation/Localisation';
 import EditProfil from './components/Edit/EditProfil';
 import EditRange from './components/Edit/EditRange';
@@ -35,7 +34,6 @@ function App() {
         <Route path="/onboarding" element={<OnBoarding />} />
         <Route path="/login" element={<Login />} />
          <Route path="/homepage" element={<HomePage/>}/>
-         <Route path="/imageupload" element={<ImageUpload />} />
          <Route path="/homepage/localisation" element={<Localisation />} />
           <Route path="/homepage/editprofil" element={<EditProfil />} />
          <Route path="/homepage/editrange" element={<EditRange />} />

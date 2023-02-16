@@ -18,23 +18,29 @@ const Localisation = (props) => {
   const [lat, setLat] = useState(37.7749);
   const [lng, setLng] = useState(-122.4194);
 
+
+
   const handleAuthorize = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        setLat(position.coords.latitude);
-        setLng(position.coords.longitude);
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        setLat(lat);
+        setLng(lng);
         setAuthorized(true);
-
-        axios.put('/api/store-location', { lat, lng  })
+  
+        axios.put('/api/store-location', { lat, lng })
           .then(res => console.log(res.data))
           .catch(err => console.error(err));
       });
     }
-  }
+  };
 
   return (
+    <>
+          <EditLeft/>
+
     <div className="map-styles">
-      <EditLeft/>
       {!authorized &&
         <button className="map-display" onClick={handleAuthorize}>Position</button>
       }
@@ -50,6 +56,7 @@ const Localisation = (props) => {
         />
       }
     </div>
+    </>
   );
 };
 

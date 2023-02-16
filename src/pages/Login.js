@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/login.css'
+import '../components/styles/login.css'
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import { useState } from 'react'

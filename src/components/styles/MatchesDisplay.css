@@ -7,7 +7,7 @@ overflow-y: scroll;
 overscroll-behavior-y:none;
 scrollbar-width: none;
 color: white;
-height: 700px;
+height: 850px;
 width: 35%;
 
 }
@@ -15,7 +15,7 @@ width: 35%;
 .match-card {
     height: 90px;
     width: 150px;
-    margin: 60px;
+    margin: 100px 0px;
 
 }
 
@@ -27,7 +27,7 @@ width: 35%;
     align-items: center;
     border-radius: 50%;
     justify-content: space-between;
-
+    margin: -50px 0px;
 
 }
 
@@ -37,3 +37,23 @@ justify-content: center;
 position: relative;
 right: 150px;
 }
+
+
+@media (max-width: 700px) {
+  .matches-display {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    left: 70px;
+
+  }
+  .picture-user-matches {
+    width: 100%;
+  }
+  .match-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;;
+  }
+  }

@@ -11,18 +11,11 @@ import {useNavigate} from 'react-router-dom';
 
 const EditProfil = () => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
-    const [formData, setFormData] = useState({
+    const [editData, setEditData] = useState({
         user_id: cookies.UserId,
-        first_name: "",
-        dob_day: "",
-        dob_month: "",
-        dob_year: "",
-        show_gender: false,
-        gender_identity: "man",
-        gender_interest: "woman",
         url: "",
         about: "",
-        matches: []
+    
 
     })
 
@@ -32,7 +25,7 @@ const EditProfil = () => {
         console.log('submitted')
         e.preventDefault()
         try {
-            const response = await axios.put('http://localhost:5000/user', {formData})
+            const response = await axios.put('http://localhost:5000/edit', {editData})
             console.log(response)
             const success = response.status === 200
             console.log(success);
@@ -48,16 +41,13 @@ const EditProfil = () => {
         const value = e.target.type === "checkbox" ? e.target.checked : e.target.value
         const name = e.target.name
 
-        setFormData((prevState) => ({
+        setEditData((prevState) => ({
             ...prevState,
             [name]: value
         }))
     }
 
 
-    const handleModif = (e) => {
-   
-        }
 
 
 
@@ -82,11 +72,11 @@ const EditProfil = () => {
                             name="about"
                             required={true}
                             placeholder="Passions , Hobbies  ... "
-                            value={formData.about}
+                            value={editData.about}
                             onChange={handleChange}
                         />
 
-                        <input onClick={handleModif} className="modif-submif" type="submit"/>
+                        <input  className="modif-submif" type="submit"/>
                     </section>
 
                     <section>
@@ -100,7 +90,7 @@ const EditProfil = () => {
                             required={true}
                         />
                         <div className="photo-container">
-                            {formData.url && <img src={formData.url} alt="profile pic preview"/>}
+                            {editData.url && <img src={editData.url} alt="profile pic preview"/>}
                         </div>
 
 

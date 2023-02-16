@@ -37,34 +37,37 @@ const ChatDisplay = ({ user , clickedUser }) => {
         getClickedUsersMessages()
     }, [])
 
-    const messages = []
-
+    const currentUserMessages = [];
+    const clickedUserMessages = [];
+    
     usersMessages?.forEach(message => {
-        const formattedMessage = {}
-        formattedMessage['name'] = user?.first_name
-        formattedMessage['img'] = user?.url
-        formattedMessage['message'] = message.message
-        formattedMessage['timestamp'] = message.timestamp
-        messages.push(formattedMessage)
-    })
-
+      const formattedMessage = {};
+      formattedMessage['name'] = user?.first_name;
+      formattedMessage['img'] = user?.url;
+      formattedMessage['message'] = message.message;
+      formattedMessage['timestamp'] = message.timestamp;
+      currentUserMessages.push(formattedMessage);
+    });
+    
     clickedUsersMessages?.forEach(message => {
-        const formattedMessage = {}
-        formattedMessage['name'] = clickedUser?.first_name
-        formattedMessage['img'] = clickedUser?.url
-        formattedMessage['message'] = message.message
-        formattedMessage['timestamp'] = message.timestamp
-        messages.push(formattedMessage)
-    })
-
-    const descendingOrderMessages = messages?.sort((a,b) => a.timestamp.localeCompare(b.timestamp))
+      const formattedMessage = {};
+      formattedMessage['name'] = clickedUser?.first_name;
+      formattedMessage['img'] = clickedUser?.url;
+      formattedMessage['message'] = message.message;
+      formattedMessage['timestamp'] = message.timestamp;
+      clickedUserMessages.push(formattedMessage);
+    });
+    
+    const messages = [...currentUserMessages, ...clickedUserMessages];
+    const descendingOrderMessages = messages?.sort((a,b) => a.timestamp.localeCompare(b.timestamp));
 
     console.log('usersMessages', usersMessages);
     console.log('formattedMessages', messages);
 
     return (
         <>
-        <Chat descendingOrderMessages={descendingOrderMessages}/>
+<Chat descendingOrderMessages={messages} isSender={true} />
+
      <ChatInput
          user={user}
          clickedUser={clickedUser} 

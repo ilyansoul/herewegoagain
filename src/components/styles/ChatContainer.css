@@ -4,12 +4,17 @@
     text-align: left;
     z-index: 1;
     background: #95034e;
-    overflow: scroll;
     border-left: 2px solid #f2f2f7;
+    overflow: scroll;
 
 }
 
 @media only screen and (max-width: 700px) {
+
+    .chat-container{
+height:100% ;
+width: 100%;
+    }
     .chat-container-header {
     display: grid;
     grid-template-columns: 1fr;
@@ -20,12 +25,28 @@
         background: #282A3A;
 
     }
+    textarea {
+position: relative;
+top: 230px;
+left: 30px;
+        
+    }
+    .secondary-button {
+        position: relative;
+top: 230px;
+width: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
+left: 220px;
+    }
   }
 
 
   .btn-position {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    width: 100%;
     
   }
 

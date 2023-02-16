@@ -2,7 +2,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
-import './styles/register.css';
+import '../components/styles/register.css';
+import Logo from '../components/logo.png';
+
 
 
 const Register = () => {
@@ -47,6 +49,8 @@ const Register = () => {
 
     return (
         <div className="page">
+                    <img className='logo-acceuil' src={Logo} alt="" />
+
         <div className="container">
     <div class="header">Inscription</div>
 
@@ -88,8 +92,8 @@ const Register = () => {
                 </div>
                 <input className="register-submit" type="submit"/>
                 <div class="form-link sign-up">
-        <span>Deja un compte  ?      </span> 
-        <a href="#">Connecte toi</a>
+        <span className='f'>Deja un compte  ?      </span> 
+        <a className='already' href="/login">Connecte toi</a>
       </div>
 
                 
